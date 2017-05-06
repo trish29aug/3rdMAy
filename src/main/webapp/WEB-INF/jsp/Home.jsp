@@ -2,8 +2,8 @@
 <br>
 <br>
 <h2>Hello World!</h2>
-	<div class="col-sm-6">
-		Home area
+	<div id="snap" class="col-sm-6">
+		<jsp:include page="snapShots.jsp" />  
 	</div>
 	<div class="col-sm-6 panel panel-success" style="padding-right:0px;padding-left:0px;">
 		<ul class="nav nav-tabs">
@@ -30,7 +30,7 @@
 		    <div id="signUpDiv" class="tab-pane fade">
 		    	<form action="signUp" id="signingForm">
 					<div class="input-group">
-				      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 				      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
 				    </div>
 				    <div class="input-group">
@@ -42,8 +42,8 @@
 				      <input id="lname" type="text" class="form-control" name="lname" placeholder="Last Name">
 				    </div>
 				    <div class="input-group">
-				      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				      <input id="age" type="text" class="form-control" name="age" placeholder="Age">
+				      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+				      <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" placeholder="Contact Number">
 				    </div>
 				    <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

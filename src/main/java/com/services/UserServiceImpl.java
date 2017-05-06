@@ -21,15 +21,15 @@ public class UserServiceImpl implements UserService{
       }
      
 	
-	public void persistUser(UserBean bean){
+	public String persistUser(UserBean bean){
 			System.out.println(bean.getUserId());
 			System.out.println(bean.getlName());
 			System.out.println(bean.getfName());
 			System.out.println(bean.getPassword());
-			userDAO.persistUser(bean);
+			return userDAO.persistUser(bean);
 		
 	}
-	public boolean checkLogin(String userName, String userPassword){
+	public String checkLogin(String userName, String userPassword){
 		System.out.println("In Service class...Check Login");
         return userDAO.checkLogin(userName, userPassword);
 	}

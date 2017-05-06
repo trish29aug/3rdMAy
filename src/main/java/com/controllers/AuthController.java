@@ -1,5 +1,6 @@
 package com.controllers;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,10 +22,12 @@ public class AuthController {
 	
 	@RequestMapping("/login")
 	public ModelAndView login(HttpServletRequest request){
-		
-	if(userService.checkLogin(request.getParameter("userId"),request.getParameter("password"))){
+		String userName=userService.checkLogin(request.getParameter("userId"),request.getParameter("password"));
+	if(userName!=null && userName.length()>0){
+		 
 		HttpSession session= request.getSession();
 		session.setAttribute("user", request.getParameter("userId"));
+		session.setAttribute("userName",userName);
 		return new ModelAndView("loginSuccess");
 		}
 	else
@@ -39,9 +42,12 @@ public class AuthController {
 		usr.setfName(request.getParameter("fname"));
 		usr.setlName(request.getParameter("lname"));
 		usr.setPassword(request.getParameter("signUpPassword"));
-		usr.setAge(Integer.parseInt(request.getParameter("age")));
+		usr.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
 		 
 		userService.persistUser(usr);
+		HttpSession session= request.getSession();
+		session.setAttribute("user", request.getParameter("userId"));
+		session.setAttribute("userName",request.getParameter("fname"));
 		return new ModelAndView("loginSuccess");
 	}
 	

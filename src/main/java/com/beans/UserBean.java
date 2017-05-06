@@ -5,7 +5,13 @@ public class UserBean {
 	private String fName;
 	private String lName;
 	private String password;
-	private int age;
+	private Long phoneNumber;
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public String getfName() {
 		return fName;
 	}
@@ -32,10 +38,4 @@ public class UserBean {
 		this.userId = userId;
 	}
 	
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
 }

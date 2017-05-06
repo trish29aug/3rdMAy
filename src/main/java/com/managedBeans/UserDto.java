@@ -19,7 +19,13 @@ public class UserDto {
 	
 	private String password;
 	
-	private int age;
+	public Long getphoneNumber() {
+		return phoneNumber;
+	}
+	public void setphoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	private Long phoneNumber;
 	public String getUserId() {
 		return userId;
 	}
@@ -45,11 +51,6 @@ public class UserDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
+	
 
 }

@@ -20,17 +20,23 @@
       <a class="navbar-brand" href="home.jsp">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#home">User Profile</a></li>
-      <li><a href="#p1">Page 1</a></li>
-      <li><a href="#p2">Page 2</a></li>
+      <li class="active"><a href="#profile">User's Home</a></li>
+      <li><a href="#p1">Activities</a></li>
+      <li><a href="#p2">Blogs</a></li>
       <li><a href="#p3">Page 3</a></li>
-	<form action="logout" id="logoutForm">
-    	<button type="submit" class="btn btn-primary form-control">Logout</button>
-	</form>
+      
+      <li class="dropdown">
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><label>Hi,<%=session.getAttribute("userName")%></label>
+	    <span class="caret"></span></a>
+	    <ul class="dropdown-menu">
+	      <li><a href="#">Settings</a></li>
+	      <li><form action="logout" id="logoutForm"><button type="submit" class="btn btn-primary form-control">Logout</button></form></li> 
+	    </ul>
+ 	 </li>
     </ul>
   </div>
 </nav>
-	<div id="home">
+	<div id="profile">
 		<jsp:include page="profile.jsp" />  
 	</div>
 	<div id="p1">

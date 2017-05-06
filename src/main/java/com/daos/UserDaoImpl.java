@@ -36,11 +36,11 @@ public class UserDaoImpl implements UserDao {
            return sessionFactory.openSession();
     }
 
-	public void persistUser(UserBean bean){
+	public String persistUser(UserBean bean){
 		System.out.println("in persist dao");
 		try{
 		/*UserDto user= new UserDto();*/
-		user.setAge(bean.getAge());
+		user.setphoneNumber(bean.getPhoneNumber());
 		user.setfName(bean.getfName());
 		user.setlName(bean.getlName());
 		user.setUserId(bean.getUserId());
@@ -62,24 +62,22 @@ public class UserDaoImpl implements UserDao {
 	      
 	    session.getTransaction().commit();//transaction is commited  
 	    session.close();  
-	      
-	    System.out.println("successfully saved"); 
+	    System.out.println("successfully saved");
+	    return user.getfName()+" "+user.getlName();
+	     
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("error");
 			e.printStackTrace();
+			return null;
 		}
 		
 	}
-	public boolean checkLogin(String userId, String userPassword){
+	public String checkLogin(String userId, String userPassword){
 		System.out.println("In Check login");
-		boolean userFound = false;
-		//Query using Hibernate Query Language
-		/*String SQL_QUERY =" from Users as o where o.userId=? and o.password=?";
-		Query query = session.createQuery(SQL_QUERY);
-		query.setParameter(0,userId);
-		query.setParameter(1,userPassword);*/
+		
+		String userName=null;
 		Configuration cfg=new Configuration();  
 	    cfg.configure("hibernate.cfg.xml");//populates the data of the configuration file  
 	      
@@ -93,16 +91,19 @@ public class UserDaoImpl implements UserDao {
 	      
 	    //creating transaction object  
 	    Transaction t=session.beginTransaction();
-		String SQL_QUERY ="from UserDto where userId=?";
+		String SQL_QUERY ="select fName,lName from UserDto where userId=?";
 		Query query = session.createQuery(SQL_QUERY);
 		query.setParameter(0,userId);
-		List list = query.list();
 
-		if ((list != null) && (list.size() > 0)) {
-			userFound= true;
+		List<Object[]> rows = query.list();
+
+		if ((rows!= null) && (rows.size()== 1)) {
+			for (Object[] row : rows) {
+				userName= row[0]+" "+row[1];
+			}
 		}
 
 		session.close();
-		return userFound;              
+		return userName;              
    }
 }
